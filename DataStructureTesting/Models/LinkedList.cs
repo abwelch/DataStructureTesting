@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace DataStructureTesting.Models
@@ -44,6 +43,35 @@ namespace DataStructureTesting.Models
             }
             ptr.Next = new Node(val);
             NodeCount++;
+        }
+        
+        // Note: position indexing is zero-based
+        public bool Insert(int val, int position)
+        {
+            // Attempt to insert a node in a position that does not exist
+            if (position > NodeCount)
+                return false;
+            if (position == 0)
+            {
+                Node newHead = new Node(val);
+                newHead.Next = Head;
+                Head = newHead;
+            }
+            else
+            {
+                Node ptr = Head;
+                // Iterate to the node proceeding desired position to insert (ex: if index 2, iterate to second node)
+                for (int i = 0; i < position-1; i++)
+                {
+                    ptr = ptr.Next;
+                }
+                Node temp = ptr.Next;
+                ptr.Next = new Node(val);
+                ptr = ptr.Next;
+                ptr.Next = temp;
+            }
+            NodeCount++;
+            return true;
         }
 
         public void PrintListContents()
