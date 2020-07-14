@@ -74,6 +74,31 @@ namespace DataStructureTesting.Models
             return true;
         }
 
+        public bool Contains(int val)
+        {
+            Node ptr = Head;
+            while (ptr != null)
+            {
+                if (ptr.Value == val)
+                    return true;
+                ptr = ptr.Next;
+            }
+            return false;
+        }
+
+        // Returns null if provided pos value is invalid
+        public int? RetrieveAtPosition(int pos)
+        {
+            Node ptr = Head;
+            for (int i = 0; i < pos && ptr != null; i++)
+            {
+                ptr = ptr.Next;
+            }
+            if (ptr != null)
+                return ptr.Value;
+            return null;
+        }
+
         public void PrintListContents()
         {
             if (Head == null)
