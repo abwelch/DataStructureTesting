@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Threading.Tasks;
 
 namespace DataStructureTesting.Models
@@ -36,6 +37,12 @@ namespace DataStructureTesting.Models
         // Time Complexity: O(n)
         public void Append(int val)
         {
+            if (Head == null)
+            {
+                Head = new Node(val);
+                NodeCount++;
+                return;
+            }
             Node ptr = Head;
             // Traverse to end of list
             while (ptr.Next != null)
@@ -140,10 +147,12 @@ namespace DataStructureTesting.Models
                     if (ptr == Head)
                     {
                         Head = Head.Next;
+                        NodeCount--;
                         return true;
                     }
                     // If later in list
                     prev.Next = ptr.Next;
+                    NodeCount--;
                     return true;
                 }
                 prev = ptr;
@@ -151,5 +160,54 @@ namespace DataStructureTesting.Models
             }
             return false;
         }
+
+        public bool RemoveAt(int pos)
+        {
+
+            if (pos > NodeCount)
+                return false;
+            if (pos == 0)
+            {
+                Head = Head.Next;
+                NodeCount--;
+                return true;
+            }
+            Node ptr = Head;
+            int counter = 0;
+            while (counter != pos - 1)
+            {
+                ptr = ptr.Next;
+                counter++;
+
+            }
+
+            ptr.Next = ptr.Next.Next;
+            NodeCount--;
+            return true;
+        }
+
+        public bool Replace(int pos, int val)
+        {
+            if (pos > NodeCount)
+                return false;
+            if (pos == 0)
+            {
+                Head.Value = val;
+                return true;
+
+            }
+            Node ptr = Head;
+            int counter = 0;
+            while (counter != 0)
+            {
+                ptr = ptr.Next;
+                counter++;
+            }
+            ptr.Value = val;
+            return true;
+
+        }
+
     }
 }
+
