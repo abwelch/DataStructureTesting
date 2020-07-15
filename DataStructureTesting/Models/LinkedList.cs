@@ -33,6 +33,7 @@ namespace DataStructureTesting.Models
             NodeCount = 1;
         }
 
+        // Time Complexity: O(n)
         public void Append(int val)
         {
             Node ptr = Head;
@@ -44,7 +45,8 @@ namespace DataStructureTesting.Models
             ptr.Next = new Node(val);
             NodeCount++;
         }
-        
+
+        // Time Complexity: O(n)
         // Note: position indexing is zero-based
         public bool Insert(int val, int position)
         {
@@ -61,7 +63,7 @@ namespace DataStructureTesting.Models
             {
                 Node ptr = Head;
                 // Iterate to the node proceeding desired position to insert (ex: if index 2, iterate to second node)
-                for (int i = 0; i < position-1; i++)
+                for (int i = 0; i < position - 1; i++)
                 {
                     ptr = ptr.Next;
                 }
@@ -74,6 +76,7 @@ namespace DataStructureTesting.Models
             return true;
         }
 
+        // Time Complexity: O(n)
         public bool Contains(int val)
         {
             Node ptr = Head;
@@ -86,6 +89,7 @@ namespace DataStructureTesting.Models
             return false;
         }
 
+        // Time Complexity: O(n)
         // Returns null if provided pos value is invalid
         public int? RetrieveAtPosition(int pos)
         {
@@ -99,6 +103,7 @@ namespace DataStructureTesting.Models
             return null;
         }
 
+        // Time Complexity: O(n)
         public void PrintListContents()
         {
             if (Head == null)
@@ -120,6 +125,31 @@ namespace DataStructureTesting.Models
             }
             Console.Write(" }");
             Console.Write("\n");
+        }
+
+        // Time Complexity: O(n)
+        public bool Remove(int val)
+        {
+            Node ptr = Head;
+            Node prev = null;
+            while (ptr != null)
+            {
+                if (ptr.Value == val)
+                {
+                    // If very first element
+                    if (ptr == Head)
+                    {
+                        Head = Head.Next;
+                        return true;
+                    }
+                    // If later in list
+                    prev.Next = ptr.Next;
+                    return true;
+                }
+                prev = ptr;
+                ptr = ptr.Next;
+            }
+            return false;
         }
     }
 }
