@@ -8,7 +8,7 @@ namespace DataStructureTesting.Models
     public class SinglyLinkedList
     {
         private class Node
-        { 
+        {
             public int Value { get; set; }
             public Node Next { get; set; }
 
@@ -20,10 +20,14 @@ namespace DataStructureTesting.Models
         }
 
         private Node Head { get; set; }
+
+        private Node Tail { get; set; }
+
         public int NodeCount { get; set; }
 
         public SinglyLinkedList()
         {
+            Tail = null;
             Head = null;
             NodeCount = 0;
         }
@@ -31,25 +35,24 @@ namespace DataStructureTesting.Models
         public SinglyLinkedList(int val)
         {
             Head = new Node(val);
+            Tail = Head;
             NodeCount = 1;
         }
 
-        // Time Complexity: O(n)
+        // Time Complexity: O(1)
         public void Append(int val)
         {
             if (Head == null)
             {
                 Head = new Node(val);
+                Tail = Head;
                 NodeCount++;
                 return;
             }
-            Node ptr = Head;
-            // Traverse to end of list
-            while (ptr.Next != null)
-            {
-                ptr = ptr.Next;
-            }
-            ptr.Next = new Node(val);
+
+            Tail.Next = new Node(val);
+            Tail = Tail.Next;
+
             NodeCount++;
         }
 
@@ -60,7 +63,13 @@ namespace DataStructureTesting.Models
             // Attempt to insert a node in a position that does not exist
             if (position > NodeCount)
                 return false;
-            if (position == 0)
+            if (position == NodeCount)
+            {
+                Tail.Next = new Node(val);
+                Tail = Tail.Next;
+
+            }
+            else if (position == 0)
             {
                 Node newHead = new Node(val);
                 newHead.Next = Head;
@@ -100,7 +109,12 @@ namespace DataStructureTesting.Models
         // Returns null if provided pos value is invalid
         public int? RetrieveAtPosition(int pos)
         {
+            if (pos == NodeCount - 1)
+            {
+                return Tail.Value;
+            }
             Node ptr = Head;
+
             for (int i = 0; i < pos && ptr != null; i++)
             {
                 ptr = ptr.Next;
@@ -141,12 +155,22 @@ namespace DataStructureTesting.Models
             Node prev = null;
             while (ptr != null)
             {
+
                 if (ptr.Value == val)
                 {
+
                     // If very first element
                     if (ptr == Head)
                     {
                         Head = Head.Next;
+                        NodeCount--;
+                        return true;
+                    }
+                    if (ptr == Tail)
+                    {
+
+                        Tail = prev;
+                        Tail.Next = null;
                         NodeCount--;
                         return true;
                     }
@@ -157,14 +181,18 @@ namespace DataStructureTesting.Models
                 }
                 prev = ptr;
                 ptr = ptr.Next;
+
             }
             return false;
         }
 
-        public bool RemoveAt(int pos)
+        public bool RemoveAt(int? pos)
         {
-
-            if (pos > NodeCount)
+            if (pos == null)
+            {
+                return false;
+            }
+            if (pos >= NodeCount)
                 return false;
             if (pos == 0)
             {
@@ -172,6 +200,7 @@ namespace DataStructureTesting.Models
                 NodeCount--;
                 return true;
             }
+
             Node ptr = Head;
             int counter = 0;
             while (counter != pos - 1)
@@ -179,6 +208,13 @@ namespace DataStructureTesting.Models
                 ptr = ptr.Next;
                 counter++;
 
+            }
+            if (ptr.Next == Tail)
+            {
+                Tail = ptr;
+                Tail.Next = null;
+                NodeCount--;
+                return true;
             }
             ptr.Next = ptr.Next.Next;
             NodeCount--;
@@ -209,6 +245,7 @@ namespace DataStructureTesting.Models
         // Time Complexity: O(n)
         public void Reverse()
         {
+            Tail = Head;
             Node current = Head;
             Node prev = null;
             Node next = null;
@@ -221,7 +258,7 @@ namespace DataStructureTesting.Models
             }
             // Assign head to final valid node in list (now considered the new Head)
             Head = prev;
+
         }
     }
 }
-
