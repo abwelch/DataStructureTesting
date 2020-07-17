@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -32,15 +33,39 @@ namespace DataStructureTesting.Models
 
             return x;
         }
+
+        public int? Peek()
+        {
+            return Zelda.RetrieveAtPosition(0);
+        }
+
+
+        // returns number of elements in the stack
+        public int Size()
+        {
+            return Zelda.NodeCount;
+        }
+        // returns bool if the stack is empty or not
+        public bool IsEmpty()
+        {
+            if(Zelda.NodeCount == 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+
         //scans the stack for a certain value, returns true or false 
         public bool Contains(int val)
         {
-            return true;
+            return Zelda.Contains(val);
+
         }
-        // scans the stack for certain val, returns position of first instance ofthat value
-        public int FindPosition(int val)
+        // returns value in a certain position
+        public int? ValueAtPosition(int pos)
         {
-            return 0;
+            return Zelda.RetrieveAtPosition(pos);
         }
     }
 
