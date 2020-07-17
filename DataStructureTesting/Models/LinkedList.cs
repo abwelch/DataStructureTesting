@@ -8,7 +8,7 @@ namespace DataStructureTesting.Models
     public class LinkedList
     {
         private class Node
-        {
+        { 
             public int Value { get; set; }
             public Node Next { get; set; }
 
@@ -180,7 +180,6 @@ namespace DataStructureTesting.Models
                 counter++;
 
             }
-
             ptr.Next = ptr.Next.Next;
             NodeCount--;
             return true;
@@ -194,7 +193,6 @@ namespace DataStructureTesting.Models
             {
                 Head.Value = val;
                 return true;
-
             }
             Node ptr = Head;
             int counter = 0;
@@ -205,9 +203,25 @@ namespace DataStructureTesting.Models
             }
             ptr.Value = val;
             return true;
-
         }
 
+        // Reverses the order of the nodes
+        // Time Complexity: O(n)
+        public void Reverse()
+        {
+            Node current = Head;
+            Node prev = null;
+            Node next = null;
+            while (current != null)
+            {
+                next = current.Next;
+                current.Next = prev;
+                prev = current;
+                current = next;
+            }
+            // Assign head to final valid node in list (now considered the new Head)
+            Head = prev;
+        }
     }
 }
 
