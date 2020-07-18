@@ -9,7 +9,12 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+  color: dodgerblue;
+}
+
+a:hover {
+    color: dodgerblue;
+    text-decoration: underline;
 }
 
 .btn-primary {
@@ -62,6 +67,8 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
     background-color: black;
+    color: white;
+    font-size: 18px;
 }
 .footer {
   position: absolute;
@@ -69,4 +76,13 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+a.nav-link {
+    font-size: 20px;
+}
+
+a.nav-link:hover {
+    color: dodgerblue !important;
+    text-decoration: underline;
 }
