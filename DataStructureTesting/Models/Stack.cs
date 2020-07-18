@@ -3,7 +3,7 @@
     // A standard Stack data structure implemented with a singly linked list
     public class Stack
     {
-        public SinglyLinkedList Zelda { get; }
+        private SinglyLinkedList Zelda { get; }
 
         public Stack()
         {
@@ -67,6 +67,13 @@
         public int? ValueAtPosition(int pos)
         {
             return Zelda.RetrieveAtPosition(pos);
+        }
+
+
+        // Time Complexity: O(n)
+        public void PrintStackContent()
+        {
+            Zelda.PrintListContents();
         }
     }
 }
