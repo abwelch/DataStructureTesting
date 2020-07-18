@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Threading.Tasks;
 
 namespace DataStructureTesting.Models
 {
@@ -20,9 +17,7 @@ namespace DataStructureTesting.Models
         }
 
         private Node Head { get; set; }
-
         private Node Tail { get; set; }
-
         public int NodeCount { get; set; }
 
         public SinglyLinkedList()
@@ -49,15 +44,14 @@ namespace DataStructureTesting.Models
                 NodeCount++;
                 return;
             }
-
             Tail.Next = new Node(val);
             Tail = Tail.Next;
-
             NodeCount++;
         }
 
-        // Time Complexity: O(n)
+        // Create and insert a node with the passed value
         // Note: position indexing is zero-based
+        // Time Complexity: O(n)
         public bool Insert(int val, int position)
         {
             // Attempt to insert a node in a position that does not exist
@@ -67,7 +61,6 @@ namespace DataStructureTesting.Models
             {
                 Tail.Next = new Node(val);
                 Tail = Tail.Next;
-
             }
             else if (position == 0)
             {
@@ -92,6 +85,7 @@ namespace DataStructureTesting.Models
             return true;
         }
 
+        // Return a bool indicating if the specified argument value exists in the list
         // Time Complexity: O(n)
         public bool Contains(int val)
         {
@@ -114,7 +108,6 @@ namespace DataStructureTesting.Models
                 return Tail.Value;
             }
             Node ptr = Head;
-
             for (int i = 0; i < pos && ptr != null; i++)
             {
                 ptr = ptr.Next;
@@ -124,6 +117,7 @@ namespace DataStructureTesting.Models
             return null;
         }
 
+        // Prints all node values starting at Head
         // Time Complexity: O(n)
         public void PrintListContents()
         {
@@ -148,6 +142,7 @@ namespace DataStructureTesting.Models
             Console.Write("\n");
         }
 
+        // Remove the first occurence of node containing specified value
         // Time Complexity: O(n)
         public bool Remove(int val)
         {
@@ -155,10 +150,8 @@ namespace DataStructureTesting.Models
             Node prev = null;
             while (ptr != null)
             {
-
                 if (ptr.Value == val)
                 {
-
                     // If very first element
                     if (ptr == Head)
                     {
@@ -168,7 +161,6 @@ namespace DataStructureTesting.Models
                     }
                     if (ptr == Tail)
                     {
-
                         Tail = prev;
                         Tail.Next = null;
                         NodeCount--;
@@ -181,17 +173,17 @@ namespace DataStructureTesting.Models
                 }
                 prev = ptr;
                 ptr = ptr.Next;
-
             }
             return false;
         }
 
+        // Remove node at specified position
+        // Note: zero-based index
+        // Time Complexity: O(n)
         public bool RemoveAt(int? pos)
         {
             if (pos == null)
-            {
                 return false;
-            }
             if (pos >= NodeCount)
                 return false;
             if (pos == 0)
@@ -200,14 +192,12 @@ namespace DataStructureTesting.Models
                 NodeCount--;
                 return true;
             }
-
             Node ptr = Head;
             int counter = 0;
             while (counter != pos - 1)
             {
                 ptr = ptr.Next;
                 counter++;
-
             }
             if (ptr.Next == Tail)
             {
@@ -221,6 +211,8 @@ namespace DataStructureTesting.Models
             return true;
         }
 
+        // Replaces the value of node at specified position with new value
+        // Time Complexity: O(n)
         public bool Replace(int pos, int val)
         {
             if (pos > NodeCount)
@@ -258,7 +250,6 @@ namespace DataStructureTesting.Models
             }
             // Assign head to final valid node in list (now considered the new Head)
             Head = prev;
-
         }
     }
 }
