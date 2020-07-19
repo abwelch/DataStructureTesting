@@ -20,7 +20,12 @@ namespace RunTimeAnalyzer.ViewModels
                 new Tuple<string, string>("Singly Linked List: Remove", "Time Complexity: O(n). Explanation: Even with Tail, going to second to last node in singly list can lead to n time with n is exceptionally large."),
                 new Tuple<string, string>("Singly Linked List: Insert at Head", "Time Complexity: O(1). Explanation: Because we have a reference to Head, this operation is constant."),
                 new Tuple<string, string>("Singly Linked List: Remove at Head", "Time Complexity: O(1). Explanation: Because we have a reference to Head, this operation is constant."),
-                new Tuple<string, string>("Singly Linked List: Reverse", "Time Complexity: O(n). Explanation: This requires traversing the entire list to change the references at each node.")
+                new Tuple<string, string>("Singly Linked List: Reverse", "Time Complexity: O(n). Explanation: This requires traversing the entire list to change the references at each node."),
+                #endregion
+
+                #region [Stack]
+                new Tuple<string, string>("Stack: Push", "Time Complexity: O(1). Explanation: Our implementation of stack utilizes a singly linked list. Push occurs at the top of the stack (head of list) and is therefore constant time."),
+                new Tuple<string, string>("Stack: Pop", "Time Complexity: O(1). Explanation: Our implementation of stack utilizes a singly linked list. Pop occurs at the top of the stack (head of list) and is therefore constant time."),
                 #endregion
             };
         }
