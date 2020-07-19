@@ -12,6 +12,11 @@ a {
   color: dodgerblue;
 }
 
+a:hover {
+    color: dodgerblue;
+    text-decoration: underline;
+}
+
     a:hover {
         color: dodgerblue;
         text-decoration: underline;
@@ -81,7 +86,6 @@ body {
 a.nav-link {
     font-size: 20px;
 }
-
     a.nav-link:hover {
         color: dodgerblue !important;
         text-decoration: underline;
@@ -144,9 +148,3 @@ a.nav-link {
 }
 
 /* End of Flash Card css */
-
-
-
-
-
-
