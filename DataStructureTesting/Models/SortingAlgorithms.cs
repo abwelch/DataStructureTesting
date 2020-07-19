@@ -7,22 +7,30 @@ namespace RunTimeAnalyzer.Models
 {
     public class SortingAlgorithms
     {
-        public void BubbleSort(int[] array)
+        private int[] array { get; }
+        
+        // Instantiates array with inputted size
+        public SortingAlgorithms(int size)
+        {
+            array = new int[size];
+        }
+
+        public void BubbleSort()
         {
 
         }
 
-        public void SelectionSort(int[] array)
+        public void SelectionSort()
         {
 
         }
 
-        public void MergeSort(int[] array)
+        public void MergeSort()
         {
 
         }
 
-        public void QuickSort(int[] array)
+        public void QuickSort()
         {
 
         }
