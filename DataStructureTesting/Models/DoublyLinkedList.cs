@@ -39,6 +39,7 @@ namespace DataStructureTesting.Models
             NodeCount = 1;
         }
 
+        // Inserts a new node at the end(tail) of the list
         // Time Complexity: O(n)
         public void Append(int val)
         {
@@ -62,6 +63,7 @@ namespace DataStructureTesting.Models
             }
         }
 
+        // Returns a bool indicating whether the passed argument exists within the list or not
         // Time Complexity: O(n)
         public bool Contains(int val)
         {
@@ -75,8 +77,9 @@ namespace DataStructureTesting.Models
             return false;
         }
 
-        // Time Complexity: O(n)
+        // Returns the val of the node at specified position (zero-based indexing)
         // Returns null if provided pos value is invalid
+        // Time Complexity: O(n)
         public int? RetrieveAtPosition(int pos)
         {
             // Make this "smarter" by checking against totalNodes to determine if it's quicker to go backwards or forwards to the specified position
@@ -90,6 +93,7 @@ namespace DataStructureTesting.Models
             return null;
         }
 
+        // Print the value of each node in the list, starting at the head
         // Time Complexity: O(n)
         public void PrintListContents()
         {
@@ -114,7 +118,9 @@ namespace DataStructureTesting.Models
             Console.Write("\n");
         }
 
+        // Print the entire list, starting at the tail
         // Used to ensure Previous links are properly aligned
+        // Time Complexity: O(n)
         public void PrintListContentsReverse()
         {
             if (Head == null)
@@ -138,6 +144,8 @@ namespace DataStructureTesting.Models
             Console.Write("\n");
         }
 
+        // Replaces the value of node at specified position with passed argument value
+        // Time Complexity: O(n)
         public bool Replace(int pos, int val)
         {
             // Make this smarter as well by checking nodeCount to determine which direction to search in
