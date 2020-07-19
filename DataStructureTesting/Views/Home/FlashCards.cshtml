@@ -1,29 +1,29 @@
-﻿
+﻿@using RunTimeAnalyzer.ViewModels
+
 @{
     ViewData["Title"] = "FlashCards";
 }
 
 <div class="row">
-    <div class="col-12">
-        <h1>FlashCards</h1>
+    <div class="col-12 text-center">
+        <h1 class="display-4">FlashCards</h1>
     </div>
 </div>
-
 
 <div class="row justify-content-center">
     <div class="col-10 col-sm-8 col-md-6 flip_container">
         <div id="whole-card" class="flip m-0 p-0">
             <div class="flip_front w-100">
                 <div class="card">
-                    <div class="text-center card-body">
-                        <textarea readonly id="cardBody" rows="6" class="form-control text-center" style="display: block; height: 100%; font-size:x-large;">@Model.FlashInquizitor[0].CardBody</textarea>
+                    <div class="text-center card-body bg-primary">
+                        <textarea readonly id="cardBody" rows="6" class="form-control text-center" style="display: block; height: 100%; font-size:x-large;">@FlashCards.Cards[0].Item1</textarea>
                     </div>
                 </div>
             </div>
             <div class="flip_back w-100">
                 <div class="card">
-                    <div class="text-center card-body">
-                        <textarea readonly id="cardAnswer" rows="6" class="form-control text-center" style="display: block; height: 100%; font-size:x-large;">@Model.FlashInquizitor[0].CardAnswer</textarea>
+                    <div class="text-center card-body bg-primary">
+                        <textarea readonly id="cardAnswer" rows="6" class="form-control text-center" style="display: block; height: 100%; font-size:x-large;">@FlashCards.Cards[0].Item2</textarea>
                     </div>
                 </div>
             </div>
@@ -37,33 +37,33 @@
     <button class="btn btn-primary p-3 mr-3" style="font-size:large;" onclick="NextCard()">Next</button>
 </div>
 
-
-
-
 <script src="~/js/site.js" asp-append-version="true"></script>
 
 <script>
-    var cardBodies = [];
+    var index = 0;
+    var cardPrompts = [];
     var cardAnswers = [];
+
     window.onload = function () {
         PopulateArrays()
     };
+
     function PopulateArrays() {
-        @for (int i = 0; i < Model.FlashInquizitor.Count; i++)
+        @for (int i = 0; i < FlashCards.Cards.Count; i++)
         {
-            @:cardBodies.push("@Model.FlashInquizitor[i].CardBody");
-            @:cardAnswers.push("@Model.FlashInquizitor[i].CardAnswer");
+            @:cardPrompts.push("@FlashCards.Cards[i].Item1");
+            @:cardAnswers.push("@FlashCards.Cards[i].Item2");
         }
     }
+
     function NextCard() {
-        let currentIndex = cardBodies.indexOf(document.getElementById("cardBody").value);
-        if ((currentIndex + 1) == @Model.FlashInquizitor.Count) {
-            document.getElementById("cardBody").value = cardBodies[0];
-            document.getElementById("cardAnswer").value = cardAnswers[0];
+        if (index == cardPrompts.length-1) {
+            index = 0;
         }
         else {
-            document.getElementById("cardBody").value = cardBodies[(currentIndex+1)];
-            document.getElementById("cardAnswer").value = cardAnswers[(currentIndex+1)];
+            index++;
         }
+        document.getElementById("cardBody").value = cardPrompts[index];
+        document.getElementById("cardAnswer").value = cardAnswers[index];
     }
 </script>
