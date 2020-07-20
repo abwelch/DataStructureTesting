@@ -1,6 +1,7 @@
 ﻿namespace DataStructureTesting.Models
 {
     // A standard Stack data structure implemented with a singly linked list
+    // Recall: Stacks are LIFO (Last In First Out)
     public class Stack
     {
         private SinglyLinkedList Zelda { get; }

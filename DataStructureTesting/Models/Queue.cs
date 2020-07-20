@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+// Standard Queue data structure implemented with a singly linked list
+// Recall: Queue is FIFO (First In First Out)
 namespace DataStructureTesting.Models
 {
     public class Queue
