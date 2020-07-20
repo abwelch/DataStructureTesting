@@ -48,7 +48,6 @@ namespace DataStructureTesting.Models
             {
                 Head = new Node(val);
                 Tail = Head;
-                NodeCount++;
             }
             else
             {
@@ -59,8 +58,8 @@ namespace DataStructureTesting.Models
                 Tail = Tail.Next;
                 // Update Head as well
                 Head.Previous = Tail;
-                NodeCount++;
             }
+            NodeCount++;
         }
 
         // Returns a bool indicating whether the passed argument exists within the list or not
@@ -164,6 +163,51 @@ namespace DataStructureTesting.Models
                 counter++;
             }
             ptr.Value = val;
+            return true;
+        }
+
+        // Inserts node a specified index (zero-based). Nodes after the specified index are all moved back one.
+        // Time Complexity: O(n)
+        public bool Insert(int val, int position)
+        {
+            // Attempt to insert a node in a position that does not exist
+            if (position > NodeCount)
+                return false;
+            // Insert at tail
+            if (position == NodeCount)
+            {
+                Tail.Next = new Node(val);
+                Tail.Next.Previous = Tail;
+                Tail = Tail.Next;
+                Tail.Next = Head;
+                Head.Previous = Tail;
+            }
+            // Insert at head
+            else if (position == 0)
+            {
+                Node newHead = new Node(val);
+                newHead.Previous = Tail;
+                Tail.Next = newHead;
+                newHead.Next = Head;
+                Head.Previous = newHead;
+                Head = newHead;
+            }
+            else
+            {
+                Node ptr = Head;
+                // Traverse through list until at new node position
+                for (int i = 0; i < position; i++)
+                {
+                    ptr = ptr.Next;
+                }
+                Node newNode = new Node(val);
+                Node temp = ptr.Previous;
+                ptr.Previous = newNode;
+                newNode.Next = ptr;
+                newNode.Previous = temp;
+                temp.Next = newNode;
+            }
+            NodeCount++;
             return true;
         }
     }
