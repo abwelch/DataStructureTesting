@@ -21,9 +21,11 @@ namespace DataStructureTesting.Models
 
         // Removes the value from the front(head) of the queue and returns it
         // Time Complexity: O(1)
-        public int Dequeue()
+        public int? Dequeue()
         {
-            return 0;
+            int? value = Ganon.RetrieveAtPosition(0);
+            Ganon.RemoveAt(0);
+            return value;
         }
 
         // Adds the passed argument to the back(tail) of the queue
@@ -44,7 +46,7 @@ namespace DataStructureTesting.Models
         // Time Complexity O(1)
         public bool IsEmpty()
         {
-            return false;
+            return Ganon.IsEmpty();
         }
 
         // Searches the queue, starting at the head, and returns a bool indicating whether the value exists or not
