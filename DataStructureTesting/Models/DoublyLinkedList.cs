@@ -39,6 +39,15 @@ namespace DataStructureTesting.Models
             NodeCount = 1;
         }
 
+        // Returns a bool indicating if the list is empty or not
+        // Time Complexity: O(1)
+        public bool IsEmpty()
+        {
+            if (Head == null)
+                return true;
+            return false;
+        }
+
         // Inserts a new node at the end(tail) of the list
         // Time Complexity: O(n)
         public void Append(int val)
