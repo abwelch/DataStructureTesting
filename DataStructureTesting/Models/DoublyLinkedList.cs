@@ -210,5 +210,85 @@ namespace DataStructureTesting.Models
             NodeCount++;
             return true;
         }
+
+        // Remove the first occurrence of the node with specified value
+        // Time Complexity: O(n)
+        public bool Remove(int val)
+        {
+            Node ptr = Head;
+            while (ptr != null)
+            {
+                if (ptr.Value == val)
+                {
+                    if (ptr == Head)
+                    {
+                        Head = Head.Next;
+                        Head.Previous = Tail;
+                        Tail.Next = Head;
+                    }
+                    else if (ptr == Tail)
+                    {
+                        Tail = Tail.Previous;
+                        Tail.Next = Head;
+                        Head.Previous = Tail;
+                    }
+                    else
+                    {
+                        ptr.Previous.Next = ptr.Next;
+                        ptr.Next.Previous = ptr.Previous;
+                    }
+                    NodeCount--;
+                    return true;
+                }
+                ptr = ptr.Next;
+            }
+            return false;
+        }
+
+        // Remove node at specified position
+        // Time Complexity: O(n-1)
+        public bool RemoveAt(int pos)
+        {
+            // Index out-of-bounds
+            if (pos > NodeCount - 1)
+                return false;
+            // Remove at head
+            if (pos == 0)
+            {
+                Head = Head.Next;
+                Head.Previous = Tail;
+                Tail.Next = Head;
+            }
+            // Removal at Tail
+            else if (pos == NodeCount - 1)
+            {
+                Tail = Tail.Previous;
+                Tail.Next = Head;
+                Head.Previous = Tail;
+            }
+            // Removal elsewhere in list
+            else
+            {
+                Node ptr;
+                // Determine if starting at Head or Tail is faster
+                if (pos < NodeCount / 2)
+                {
+                    // Traverse down list, starting at Head
+                    ptr = Head;
+                    for (int i = 0; i < pos; i++)
+                        ptr = ptr.Next;
+                }
+                else
+                {
+                    // Traverse up list, starting at Tail
+                    ptr = Tail;
+                    for (int i = NodeCount - 1; i > pos; i--)
+                        ptr = ptr.Previous;
+                }
+                ptr.Previous.Next = ptr.Next;
+                ptr.Next.Previous = ptr.Previous;
+            }
+            return true;
+        }
     }
 }
