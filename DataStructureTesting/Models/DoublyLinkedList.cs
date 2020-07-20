@@ -87,7 +87,7 @@ namespace DataStructureTesting.Models
         // Time Complexity: O(n)
         public int? RetrieveAtPosition(int pos)
         {
-            if (pos > NodeCount - 1 || pos < 0)
+            if (pos >= NodeCount || pos < 0)
                 return null;
             Node ptr;
             // Determine if starting at Head or Tail is faster
@@ -163,20 +163,28 @@ namespace DataStructureTesting.Models
         // Time Complexity: O(n)
         public bool Replace(int pos, int val)
         {
-            // Make this smarter as well by checking nodeCount to determine which direction to search in
-            if (pos > NodeCount || pos < 0)
+            if (pos >= NodeCount || pos < 0)
                 return false;
             if (pos == 0)
             {
                 Head.Value = val;
                 return true;
             }
-            Node ptr = Head;
-            int counter = 0;
-            while (counter != 0)
+            Node ptr;
+            // Determine if starting at Head or Tail is faster
+            if (pos < NodeCount / 2)
             {
-                ptr = ptr.Next;
-                counter++;
+                // Traverse down list, starting at Head
+                ptr = Head;
+                for (int i = 0; i < pos; i++)
+                    ptr = ptr.Next;
+            }
+            else
+            {
+                // Traverse up list, starting at Tail
+                ptr = Tail;
+                for (int i = NodeCount - 1; i > pos; i--)
+                    ptr = ptr.Previous;
             }
             ptr.Value = val;
             return true;
@@ -266,7 +274,7 @@ namespace DataStructureTesting.Models
         public bool RemoveAt(int pos)
         {
             // Index out-of-bounds
-            if (pos > NodeCount - 1 || pos < 0)
+            if (pos >= NodeCount || pos < 0)
                 return false;
             // Remove at head
             if (pos == 0)
