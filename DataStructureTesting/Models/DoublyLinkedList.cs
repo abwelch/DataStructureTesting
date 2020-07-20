@@ -87,15 +87,25 @@ namespace DataStructureTesting.Models
         // Time Complexity: O(n)
         public int? RetrieveAtPosition(int pos)
         {
-            // Make this "smarter" by checking against totalNodes to determine if it's quicker to go backwards or forwards to the specified position
-            Node ptr = Head;
-            for (int i = 0; i < pos && ptr != null; i++)
+            if (pos >= NodeCount || pos < 0)
+                return null;
+            Node ptr;
+            // Determine if starting at Head or Tail is faster
+            if (pos < NodeCount / 2)
             {
-                ptr = ptr.Next;
+                // Traverse down list, starting at Head
+                ptr = Head;
+                for (int i = 0; i < pos; i++)
+                    ptr = ptr.Next;
             }
-            if (ptr != null)
-                return ptr.Value;
-            return null;
+            else
+            {
+                // Traverse up list, starting at Tail
+                ptr = Tail;
+                for (int i = NodeCount - 1; i > pos; i--)
+                    ptr = ptr.Previous;
+            }
+            return ptr.Value;
         }
 
         // Print the value of each node in the list, starting at the head
@@ -153,20 +163,28 @@ namespace DataStructureTesting.Models
         // Time Complexity: O(n)
         public bool Replace(int pos, int val)
         {
-            // Make this smarter as well by checking nodeCount to determine which direction to search in
-            if (pos > NodeCount)
+            if (pos >= NodeCount || pos < 0)
                 return false;
             if (pos == 0)
             {
                 Head.Value = val;
                 return true;
             }
-            Node ptr = Head;
-            int counter = 0;
-            while (counter != 0)
+            Node ptr;
+            // Determine if starting at Head or Tail is faster
+            if (pos < NodeCount / 2)
             {
-                ptr = ptr.Next;
-                counter++;
+                // Traverse down list, starting at Head
+                ptr = Head;
+                for (int i = 0; i < pos; i++)
+                    ptr = ptr.Next;
+            }
+            else
+            {
+                // Traverse up list, starting at Tail
+                ptr = Tail;
+                for (int i = NodeCount - 1; i > pos; i--)
+                    ptr = ptr.Previous;
             }
             ptr.Value = val;
             return true;
@@ -177,7 +195,7 @@ namespace DataStructureTesting.Models
         public bool Insert(int val, int position)
         {
             // Attempt to insert a node in a position that does not exist
-            if (position > NodeCount)
+            if (position > NodeCount || position < 0)
                 return false;
             // Insert at tail
             if (position == NodeCount)
@@ -256,7 +274,7 @@ namespace DataStructureTesting.Models
         public bool RemoveAt(int pos)
         {
             // Index out-of-bounds
-            if (pos > NodeCount - 1)
+            if (pos >= NodeCount || pos < 0)
                 return false;
             // Remove at head
             if (pos == 0)

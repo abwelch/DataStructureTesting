@@ -64,7 +64,7 @@ namespace DataStructureTesting.Models
         public bool Insert(int val, int position)
         {
             // Attempt to insert a node in a position that does not exist
-            if (position > NodeCount)
+            if (position > NodeCount || position < 0)
                 return false;
             if (position == NodeCount)
             {
@@ -112,7 +112,7 @@ namespace DataStructureTesting.Models
         // Returns null if provided pos value is invalid
         public int? RetrieveAtPosition(int pos)
         {
-            if (pos == NodeCount - 1)
+            if (pos == NodeCount - 1 || pos < 0)
             {
                 return Tail.Value;
             }
@@ -191,9 +191,7 @@ namespace DataStructureTesting.Models
         // Time Complexity: O(n)
         public bool RemoveAt(int? pos)
         {
-            if (pos == null)
-                return false;
-            if (pos >= NodeCount)
+            if (pos == null || pos >= NodeCount || pos < 0)
                 return false;
             if (pos == 0)
             {
@@ -224,7 +222,7 @@ namespace DataStructureTesting.Models
         // Time Complexity: O(n)
         public bool Replace(int pos, int val)
         {
-            if (pos > NodeCount)
+            if (pos >= NodeCount || pos < 0)
                 return false;
             if (pos == 0)
             {
