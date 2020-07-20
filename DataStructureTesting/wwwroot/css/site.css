@@ -22,10 +22,19 @@ a:hover {
         text-decoration: underline;
     }
 
+
+    /* edit buttons to be more professional*/
 .btn-primary {
+    
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
+}
+/* effects that occur whenever a user hovers over a flashcard*/
+.btn-primary:hover {
+    background-color: red;
+    border-color: red;
+        
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {

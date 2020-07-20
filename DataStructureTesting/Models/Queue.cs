@@ -32,34 +32,46 @@ namespace DataStructureTesting.Models
         // Time Complexity: O(1)
         public void Enqueue(int val)
         {
+             Ganon.Append(val);
 
         }
 
         // Returns the val at front(head) of the queue without removing it from the queue
         // Time Complexity: O(1)
-        public int Peek()
+        public int? Peek()
         {
-            return 0;
+           
+            return Ganon.RetrieveAtPosition(0);
         }
 
         // Returns a bool indicating whether the queue is empty or not (true if empty)
         // Time Complexity O(1)
         public bool IsEmpty()
         {
+
             return Ganon.IsEmpty();
         }
 
         // Searches the queue, starting at the head, and returns a bool indicating whether the value exists or not
         // Time Complexity: O(n)
-        public bool Search()
+        public bool Search(int val)
         {
-            return false;
+            return  Ganon.Contains(val);
         }
 
         // Searches the queue for the first occurrence of the argument value and removes if found. Returns bool indicating if removal was successful
         public bool Remove(int val)
         {
-            return false;
+            return Ganon.Remove(val);
         }
+
+        // Returns number of elements in the queue
+        // Time Complexity: O(1)
+        public int Size()
+        {
+            return Ganon.NodeCount;
+        }
+
+
     }
 }
