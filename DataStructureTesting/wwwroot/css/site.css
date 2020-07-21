@@ -26,20 +26,20 @@ a:hover {
     /* edit buttons to be more professional*/
 .btn-primary {
     
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  color: white;
+  background-color: purple;
+  border-color: mediumpurple;
 }
 /* effects that occur whenever a user hovers over a flashcard*/
-.btn-primary:hover {
-    background-color: red;
-    border-color: red;
-        
-}
+    .btn-primary:hover {
+        background-color: mediumpurple;
+        border-color: purple;
+        text-decoration: underline;
+    }
 
 .FlashCardBorder {
     background: rgb(131,58,180);
-    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(209,9,137,1) 19%, rgba(253,29,29,1) 55%, rgba(252,176,69,1) 100%);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 12%, rgba(255,21,250,1) 41%, rgba(69,116,252,1) 70%, rgba(29,244,253,1) 100%);
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
