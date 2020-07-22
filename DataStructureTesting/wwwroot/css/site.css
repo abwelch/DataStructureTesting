@@ -34,7 +34,12 @@ a:hover {
     .btn-primary:hover {
         background-color: mediumpurple;
         border-color: purple;
-        text-decoration: underline;
+        transition-duration: .5s;
+    }
+
+    .btn-primary:active {
+        box-shadow: 0 0 0 0.2rem rgba(255,21,250,1) !important;
+        background-color: mediumpurple !important;
     }
 
 .FlashCardBorder {
