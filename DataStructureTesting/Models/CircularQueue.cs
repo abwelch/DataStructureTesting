@@ -18,6 +18,7 @@ namespace RunTimeAnalyzer.Models
             Array = new int[size];
             Head = -1;
             Tail = -1;
+            Size = size;
         }
 
         public bool IsEmpty()
