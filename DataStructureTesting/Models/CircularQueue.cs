@@ -22,18 +22,10 @@ namespace RunTimeAnalyzer.Models
         }
 
         public bool IsEmpty()
-        {
-            if (Head == -1)
-                return true;
-            return false;
-        }
+            => (Head == -1);
 
         public bool IsFull()
-        {
-            if ((Tail + 1 == Size && Head == 0) || Tail + 1 == Head)
-                return true;
-            return false;
-        }
+            => ((Tail + 1 == Size && Head == 0) || Tail + 1 == Head);
 
         public bool Enqueue(int val)
         {
