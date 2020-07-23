@@ -63,14 +63,7 @@ namespace RunTimeAnalyzer.Models
             }
             else
             {
-                if (Head + 1 == Size)
-                {
-                    Head = 0;
-                }
-                else
-                {
-                    Head++;
-                }
+                Head = (Head + 1 == Size) ? 0 : ++Head;
             }
             return val;
         }
