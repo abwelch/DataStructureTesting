@@ -64,16 +64,23 @@ namespace RunTimeAnalyzer.Models
             if (IsEmpty())
                 return null;
             int val = Array[Head];
-            if (Head + 1 == Size)
+            if (Head == Tail)
             {
-                Head = 0;
+                Head = -1;
+                Tail = -1;
             }
             else
             {
-                Head++;
+                if (Head + 1 == Size)
+                {
+                    Head = 0;
+                }
+                else
+                {
+                    Head++;
+                }
             }
             return val;
         }
-
     }
 }
