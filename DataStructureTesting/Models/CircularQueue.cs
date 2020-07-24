@@ -67,5 +67,27 @@ namespace RunTimeAnalyzer.Models
             }
             return val;
         }
+
+        public int? Peek()
+        {
+            if (IsEmpty())
+                return null;
+            return Array[Head];
+        }
+
+        public void PrintContents()
+        {
+            if (Head == -1)
+                return;
+            Console.Write("{");
+            int traverse = Head;
+            while (traverse != Tail)
+            {
+                Console.Write($" {Array[traverse]},");
+                traverse = (traverse == Size - 1) ? 0 : ++traverse;
+            }
+            Console.Write($" {Array[traverse]}");
+            Console.WriteLine(" }");
+        }
     }
 }
