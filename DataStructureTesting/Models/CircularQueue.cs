@@ -5,7 +5,12 @@ using System.Threading.Tasks;
 
 namespace RunTimeAnalyzer.Models
 {
-    // Implemented using static array
+    /* DESCRIPTION:
+     * A circular queue is one in which the the tail can "wrap around" to the front of the queue if space is available
+     * In a simple static queue, once elements are dequeued, the space is no longer available for use.
+     * In a circular queue, the tail can utiilze elements at the front of the queue if it detects the space is unoccupied
+     * Implemented using static array
+     */
     public class CircularQueue
     {
         private int[] Array { get; }
@@ -21,12 +26,16 @@ namespace RunTimeAnalyzer.Models
             Size = size;
         }
 
+        // Time Complexity: O(1)
         public bool IsEmpty()
             => (Head == -1);
 
+        // Time Complexity: O(1)
         public bool IsFull()
             => ((Tail + 1 == Size && Head == 0) || Tail + 1 == Head);
 
+        // Inserts a new element at tail of the queue and returns bool indicating if operation was successful
+        // Time Complexity: O(1)
         public bool Enqueue(int val)
         {
             if (IsFull())
@@ -51,6 +60,8 @@ namespace RunTimeAnalyzer.Models
             return true;
         }
 
+        // Removes element at the head of the queue. Returns null if queue is empty
+        // Time Complexity: O(1)
         public int? Dequeue()
         {
             if (IsEmpty())
@@ -68,6 +79,8 @@ namespace RunTimeAnalyzer.Models
             return val;
         }
 
+        // Returns element at the head of the queue, without removing it from the queue. Returns null if queue is empty
+        // Time Complexity: O(1)
         public int? Peek()
         {
             if (IsEmpty())
@@ -75,6 +88,8 @@ namespace RunTimeAnalyzer.Models
             return Array[Head];
         }
 
+        // Prints all elements within the queue, starting at the head
+        // Time Complexity: O(n)
         public void PrintContents()
         {
             if (Head == -1)
