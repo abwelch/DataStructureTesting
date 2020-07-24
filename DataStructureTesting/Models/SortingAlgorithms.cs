@@ -12,31 +12,31 @@ namespace RunTimeAnalyzer.Models
             RANDOM
         }
 
-        private int[] array { get; }
+        private int[] Array { get; }
 
         // Instantiates array with inputted size
         public SortingAlgorithms(int size, Options choice)
         {
-            array = new int[size];
+            Array = new int[size];
             switch (choice)
             {
                 case Options.ASCENDING:
                     for (int i = 0; i < size; i++)
                     {
-                        array[i] = i + 1;
+                        Array[i] = i + 1;
                     }
                     break;
                 case Options.DESCENDING:
                     for (int i = size - 1; i >= 0; i--)
                     {
-                        array[i] = i + 1;
+                        Array[i] = i + 1;
                     }
                     break;
                 case Options.RANDOM:
                     var rand = new Random();
-                    for (int i = 0; i < array.Length; i++)
+                    for (int i = 0; i < Array.Length; i++)
                     {
-                        array[i] = rand.Next(0, size + 1);
+                        Array[i] = rand.Next(0, size + 1);
                     }
                     break;
             }
@@ -45,11 +45,11 @@ namespace RunTimeAnalyzer.Models
         public void PrintArray()
         {
             Console.Write("{ ");
-            for (int i = 0; i < array.Length - 1; i++)
+            for (int i = 0; i < Array.Length - 1; i++)
             {
-                Console.Write(array[i] + ", ");
+                Console.Write(Array[i] + ", ");
             }
-            Console.Write(array[array.Length - 1]);
+            Console.Write(Array[Array.Length - 1]);
             Console.WriteLine(" }");
         }
 
@@ -57,20 +57,21 @@ namespace RunTimeAnalyzer.Models
         public void InsertionSort()
         {
             // Outer loop traverses entire array, starting at second element
-            for (int i = 1; i < array.Length; i++)
+            for (int i = 1; i < Array.Length; i++)
             {
-                int current = array[i];
+                int current = Array[i];
                 int j = i - 1;
                 // Move all elements in sorted portion of array greater than current forward by one
-                while (j >= 0 && array[j] > current)
+                while (j >= 0 && Array[j] > current)
                 {
                     // current is stored above bc this statement can erase current
-                    array[j + 1] = array[j];
+                    Array[j + 1] = Array[j];
                     j--;
                 }
-                array[j + 1] = current;
+                Array[j + 1] = current;
             }
         }
+
 
         public void BubbleSort()
         {
@@ -91,5 +92,5 @@ namespace RunTimeAnalyzer.Models
         {
 
         }
-    }
+    } 
 }
