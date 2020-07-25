@@ -38,23 +38,39 @@ namespace RunTimeAnalyzer.Models
         public void CallInsertRecursive(int val)
             => InsertRecursive(val, Root);
 
-        protected void InsertRecursive(int val, Node ptr)
+        // Recursively insert
+        protected Node InsertRecursive(int val, Node ptr)
         {
             // Base case
             if (ptr == null)
             {
                 ptr = new Node(val);
-                return;
             }
-
-            if (val > ptr.Value)
+            else if (val > ptr.Value)
             {
-                //ptr = 
+                ptr.RightChild = InsertRecursive(val, ptr.RightChild);
             }
-            else
+            else if (val < ptr.Value)
             {
-
+                ptr.LeftChild = InsertRecursive(val, ptr.LeftChild);
             }
+            return ptr;
+        }
+
+        public void PrintBreadthFirst()
+        {
+            Queue<Node> q = new Queue<Node>();
+            q.Enqueue(Root);
+            while (q.Count > 0)
+            {
+                Node current = q.Dequeue();
+                if (current == null)
+                    continue;
+                q.Enqueue(current.LeftChild);
+                q.Enqueue(current.RightChild);
+                
+                // print
+            }            
         }
 
         public bool Search(int val)
