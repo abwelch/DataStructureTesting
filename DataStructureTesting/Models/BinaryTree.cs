@@ -126,5 +126,21 @@ namespace RunTimeAnalyzer.Models
             => PostOrderTraversalRecursive(Root);
 
         #endregion [Traversal Methods]
+
+        // Calculates the height of the binary tree by traversing Root's left and right subtrees
+        // Time Complexity: O(n)
+        protected int FindHeight(Node ptr)
+        {
+            if (ptr == null)
+                return -1;
+            int left = FindHeight(ptr.LeftChild);
+            int right = FindHeight(ptr.RightChild);
+            if (left > right)
+                return left + 1;
+            return right + 1;
+        }
+
+        public int CallFindHeight()
+            => FindHeight(Root);
     }
 }
