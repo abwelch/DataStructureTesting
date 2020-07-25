@@ -140,7 +140,9 @@ namespace RunTimeAnalyzer.Models
             return right + 1;
         }
 
-        public int CallFindHeight()
-            => FindHeight(Root);
+        public int CallFindHeight() => FindHeight(Root);
+
+        // Determines if the tree has degenerated into a linked list
+        public bool IsDegenerated() => TotalNodes - 1 == FindHeight(Root);
     }
 }
