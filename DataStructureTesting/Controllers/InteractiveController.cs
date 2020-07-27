@@ -12,5 +12,40 @@ namespace RunTimeAnalyzer.Controllers
         {
             return View();
         }
+
+        public IActionResult SinglyLinkedList()
+        {
+            return View();
+        }
+
+        public IActionResult DoublyLinkedList()
+        {
+            return View();
+        }
+
+        public IActionResult Stack()
+        {
+            return View();
+        }
+
+        public IActionResult Queue()
+        {
+            return View();
+        }
+
+        public IActionResult CircularQueue()
+        {
+            return View();
+        }
+
+        public IActionResult BinaryTree()
+        {
+            return View();
+        }
+
+        public IActionResult BinarySearchTree()
+        {
+            return View();
+        }
     }
 }
