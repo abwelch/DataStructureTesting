@@ -17,20 +17,16 @@ a:hover {
     text-decoration: underline;
 }
 
-    a:hover {
-        color: dodgerblue;
-        text-decoration: underline;
-    }
 
-
-    /* edit buttons to be more professional*/
+/* Main button class stylings*/
 .btn-primary {
     
   color: white;
   background-color: purple;
   border-color: mediumpurple;
+  border-width: medium;
+  border-radius: 15px;
 }
-/* effects that occur whenever a user hovers over a flashcard*/
     .btn-primary:hover {
         background-color: mediumpurple;
         border-color: purple;
@@ -38,8 +34,13 @@ a:hover {
     }
 
     .btn-primary:active {
-        box-shadow: 0 0 0 0.2rem rgba(255,21,250,1) !important;
         background-color: mediumpurple !important;
+        transform: translate(0px, 2px);
+    }
+
+    .btn-primary:focus, .btn-primary.focus {
+        box-shadow: 0 0 0 0.3rem rgba(30, 144, 255, 0.00) !important;
+        border-color: purple !important;
     }
 
 .FlashCardBorder {
@@ -52,6 +53,7 @@ a:hover {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -102,11 +104,27 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
+h3 {
+    color: cyan;
+    font-family: 'Malgun Gothic';
+}
+
+i.icon {
+    color: mediumpurple !important;
+}
+i.icon:hover {
+    color: rgba(255,21,250,1) !important;
+}
+
+.card {
+    border-radius: 15px !important;
+}
+
 a.nav-link {
     font-size: 20px;
 }
     a.nav-link:hover {
-        color: dodgerblue !important;
+        color: rgba(255,21,250,1) !important;
         text-decoration: underline;
     }
 

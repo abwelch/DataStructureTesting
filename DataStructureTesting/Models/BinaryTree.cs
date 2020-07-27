@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RunTimeAnalyzer.Models
 {
@@ -15,9 +13,7 @@ namespace RunTimeAnalyzer.Models
 
 
             public Node()
-            {
-
-            }
+            { }
 
             public Node(int val)
             {
@@ -81,7 +77,7 @@ namespace RunTimeAnalyzer.Models
             }
         }
 
-        // Publicly accessible method to call PreOrderTraversalRecursive bc Root and Node are not publicly exposed
+        // Publicly accessible method to PreOrderTraversalRecursive bc Root and Node are not publicly exposed
         public void CallPreOrderTraversalRecursive()
             => PreOrderTraversalRecursive(Root);
 
@@ -101,7 +97,7 @@ namespace RunTimeAnalyzer.Models
             }
         }
 
-        // Publicly accessible method to call InOrderTraversalRecursive bc Root and Node are not publicly exposed
+        // Publicly accessible method to InOrderTraversalRecursive bc Root and Node are not publicly exposed
         public void CallInOrderTraversalRecursive()
             => InOrderTraversalRecursive(Root);
 
@@ -121,7 +117,7 @@ namespace RunTimeAnalyzer.Models
             Console.WriteLine(ptr.Value);
         }
 
-        // Publicly accessible method to call PostOrderTraversalRecursive bc Root and Node are not publicly exposed
+        // Publicly accessible method to PostOrderTraversalRecursive bc Root and Node are not publicly exposed
         public void CallPostOrderTraversalRecursive()
             => PostOrderTraversalRecursive(Root);
 
@@ -140,6 +136,7 @@ namespace RunTimeAnalyzer.Models
             return right + 1;
         }
 
+        // Publicly accessible method to FindHeight bc Root and Node are not publicly exposed
         public int CallFindHeight() => FindHeight(Root);
 
         // Determines if the tree has degenerated into a linked list

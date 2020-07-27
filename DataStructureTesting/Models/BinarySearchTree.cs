@@ -79,7 +79,7 @@ namespace RunTimeAnalyzer.Models
             return ptr;
         }
 
-        // Publicly accessible method to call InsertRecursive bc Root and Node are not publicly exposed
+        // Publicly accessible method to InsertRecursive bc Root and Node are not publicly exposed
         public void CallInsertRecursive(int val)
             => InsertRecursive(val, Root);
 
