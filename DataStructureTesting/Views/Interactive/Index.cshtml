@@ -1,7 +1,24 @@
-﻿
+﻿@using RunTimeAnalyzer.ViewModels
+
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="row">
+    <div class="col-12">
+        <h1 class="display-4">Interactive Options</h1>
+    </div>
+</div>
+
+
+@foreach (string option in InteractiveOptions.Options)
+{
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="border-white text-center">
+                <a class="border-white" asp-controller="Interactive" asp-action="@option.Replace(" ", string.Empty)">@option</a>
+            </div>
+        </div>
+    </div>
+}
 
